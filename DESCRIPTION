@@ -1,0 +1,32 @@
+Package: data.validator
+Type: Package
+Title: Automatic Data Validation and Reporting
+Version: 0.1.4
+Authors@R: c(person("Krystian", "Igras", email = "krystian@appsilon.com", role = c("aut")),
+             person("Marcin", "Dubel", email = "marcin@appsilon.com", role = c("aut")),
+             person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = c("aut")),
+             person("Dominik", "Krzeminski", email = "dominik@appsilon.com", role = c("ctb", "cre")),
+             person(family = "Appsilon Sp. z o.o.", role = c("cph")))
+Description: Validate dataset by columns and rows using convenient predicates inspired by 'assertr' package. 
+             Generate good looking HTML report or print console output to display in logs of your data processing pipeline.
+BugReports: https://github.com/Appsilon/data.validator/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: TRUE
+RoxygenNote: 7.1.1
+Imports: shiny, assertr (>= 2.8), shiny.semantic (>= 0.3.3), knitr,
+        purrr, dplyr, tidyr, utils, R6, rlang, rmarkdown, htmltools,
+        htmlwidgets, tibble
+Suggests: testthat, covr
+Collate: 'results_parsers.R' 'semantic_report_constructors.R' 'utils.R'
+        'report.R' 'assertions.R'
+NeedsCompilation: no
+Packaged: 2021-02-26 10:22:19 UTC; dominik
+Author: Krystian Igras [aut],
+  Marcin Dubel [aut],
+  Paweł Przytuła [aut],
+  Dominik Krzeminski [ctb, cre],
+  Appsilon Sp. z o.o. [cph]
+Maintainer: Dominik Krzeminski <dominik@appsilon.com>
+Repository: CRAN
+Date/Publication: 2021-03-01 09:20:05 UTC
