@@ -1,7 +1,7 @@
-128006549822f29ffe747b179669188c *DESCRIPTION
+62cd01c3ad31c0320917359008aaa5a4 *DESCRIPTION
 afebb47c9a17ffafe489e20bc8ee1fbb *LICENSE
-735555f80a84f9963c99c100c12eb62b *NAMESPACE
-f8375bd239f8c7afdda47e4fbce3f83f *R/assertions.R
+12414c748a1b1b852074c0a4cf3e0f49 *NAMESPACE
+c2fa19f5d4bf52fe13471fe180009479 *R/assertions.R
 2ec0e44507c8040dee7797d6bc31627e *R/report.R
 73e523989ec53bc5348fa1f70e32c424 *R/results_parsers.R
 c8cfc812c11282e35d7e1a8c2ca421c0 *R/semantic_report_constructors.R
@@ -11,9 +11,6 @@ bcad8da2441096c38840a7560d9dc247 *inst/extdata/population.csv
 f0a70c3e7925fe1fee5005bee5ca87b3 *inst/rmarkdown/templates/standard/skeleton/skeleton.Rmd
 6e5e36d46ea79f87ae99a7cc3026b4db *inst/rmarkdown/templates/standard/template.yaml
 bc9e2e484ac0fc32124f173348554ceb *man/add_results.Rd
-4c08142b13b6bef7617cd9ba2a8f375f *man/assert_cols.Rd
-1e0bb88205c2f92034ba914fd144c225 *man/assert_if.Rd
-2e93ced42d12655833570b9172bab55f *man/assert_rows.Rd
 aa320be3f96cef4394db75463c915ba8 *man/convert_error_df.Rd
 8c50af817ab188484506ff28a84d7063 *man/create_summary_row.Rd
 fe6e8cc52122fdf3e6dbce3a0f30943d *man/data_validation_report.Rd
@@ -42,8 +39,11 @@ afbaabceec534a22ce661875c4a07490 *man/save_report.Rd
 fdc79322ac0a6affd8c62489bd5d6f76 *man/save_results.Rd
 02e7a8f3964b59f8e5d5bcab30a3312b *man/save_summary.Rd
 849ffc17ae28e615961abd16430b310b *man/segment.Rd
-48a5b8b75cd4c9ae66f491b720b3f5a6 *man/validate.Rd
+4154d990904754a1a665be678af3e78c *man/validate.Rd
+446b9214f10e256366fe63ffa81c094f *man/validate_cols.Rd
+3ee69cfd3b804eba99afeb4793769f52 *man/validate_if.Rd
+38797511a860684befb26a00341c3eae *man/validate_rows.Rd
 d41bad4d318383f0884f2e4aaa0eb141 *tests/testthat.R
 0fa2df7e878abc003aafe252510faf71 *tests/testthat/helper-validator.R
 2cef496621afb327aacd228ec2b5cfba *tests/testthat/test-assertions.R
-b98ecc9e5a80f10bf28d699d5aea6d9a *tests/testthat/test-validator.R
+e0de6b6cd73e583cba06085bcbdbdacb *tests/testthat/test-validator.R

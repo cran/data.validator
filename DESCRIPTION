@@ -1,7 +1,7 @@
 Package: data.validator
 Type: Package
 Title: Automatic Data Validation and Reporting
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: c(person("Krystian", "Igras", email = "krystian@appsilon.com", role = c("aut")),
              person("Marcin", "Dubel", email = "marcin@appsilon.com", role = c("aut")),
              person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = c("aut")),
@@ -21,7 +21,7 @@ Suggests: testthat, covr
 Collate: 'results_parsers.R' 'semantic_report_constructors.R' 'utils.R'
         'report.R' 'assertions.R'
 NeedsCompilation: no
-Packaged: 2021-02-26 10:22:19 UTC; dominik
+Packaged: 2021-03-02 13:16:05 UTC; dominik
 Author: Krystian Igras [aut],
   Marcin Dubel [aut],
   Paweł Przytuła [aut],
@@ -29,4 +29,4 @@ Author: Krystian Igras [aut],
   Appsilon Sp. z o.o. [cph]
 Maintainer: Dominik Krzeminski <dominik@appsilon.com>
 Repository: CRAN
-Date/Publication: 2021-03-01 09:20:05 UTC
+Date/Publication: 2021-03-02 14:40:02 UTC
