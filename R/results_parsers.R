@@ -1,4 +1,5 @@
 #' Constants
+#' @keywords internal
 error_class <- "assertr_error"
 success_class <- "assertr_success"
 
@@ -11,8 +12,9 @@ warning_id <- "warning"
 #' @param assertion assertion object (check \code{assertr} package for details)
 #'
 #' @return character with id of assertion: "error", "success", "warning"
+#' @keywords internal
 get_assertion_type <- function(assertion) {
-  assertr_types <- class(assertion)
+  assertr_types <- class(assertion) #nolint: object_usage_linter
   dplyr::case_when(
     success_class %in% assertr_types ~ success_id,
     isTRUE(attr(assertion, "warning")) ~ warning_id,
@@ -24,8 +26,13 @@ get_assertion_type <- function(assertion) {
 #' Convert error table column types
 #'
 #' @param error_df Table consisting assertr error details
+#' @keywords internal
 convert_error_df <- function(error_df) {
-  dplyr::mutate_at(error_df, dplyr::vars(c("verb", "redux_fn", "predicate", "column", "value")), as.character)
+  dplyr::mutate_at(
+    error_df,
+    dplyr::vars(c("verb", "redux_fn", "predicate", "column", "value")),
+    as.character
+  )
 }
 
 #' Parse errors to data.frame
@@ -34,6 +41,7 @@ convert_error_df <- function(error_df) {
 #'  for details)
 #'
 #' @return data.frame with errors
+#' @keywords internal
 parse_errors_to_df <- function(data) {
   if (is.null(attr(data, error_class))) {
     return(NULL)
@@ -61,6 +69,7 @@ parse_errors_to_df <- function(data) {
 #'  for details)
 #'
 #' @return data.frame with successes
+#' @keywords internal
 parse_successes_to_df <- function(data) {
   if (is.null(attr(data, success_class))) {
     return(NULL)
@@ -84,6 +93,7 @@ parse_successes_to_df <- function(data) {
 #' @param data assertr object  (check \code{assertr} package for details)
 #'
 #' @return data.frame with successes and errors
+#' @keywords internal
 parse_results_to_df <- function(data) {
   dplyr::bind_rows(
     parse_errors_to_df(data),
@@ -96,9 +106,10 @@ parse_results_to_df <- function(data) {
 #' @param results assertion results
 #'
 #' @return table with results number
+#' @keywords internal
 get_results_number <- function(results) {
   results %>%
-    dplyr::select(.data$assertion.id, .data$type) %>%
+    dplyr::select("assertion.id", "type") %>%
     dplyr::distinct() %>%
     dplyr::pull(.data$type) %>%
     table()

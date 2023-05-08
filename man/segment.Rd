@@ -9,7 +9,7 @@ segment(title, ...)
 \arguments{
 \item{title}{Title of the segment.}
 
-\item{...}{Additional agruments inside segment.}
+\item{...}{Additional arguments inside segment.}
 }
 \value{
 Segment.
@@ -17,3 +17,4 @@ Segment.
 \description{
 Create a UI segment element.
 }
+\keyword{internal}
