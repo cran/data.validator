@@ -8,8 +8,8 @@ Report <- R6Class( #nolint: object_name_linter
       types <- c(success_id, warning_id, error_id)[c(success, warning, error)]
       cat("Validation summary: \n")
       if (success) cat(" Number of successful validations: ", private$n_passed, "\n", sep = "")
-      if (warning) cat(" Number of failed validations: ", private$n_failed, "\n", sep = "")
-      if (error) cat(" Number of validations with warnings: ", private$n_warned, "\n", sep = "")
+      if (warning) cat(" Number of validations with warnings: ", private$n_warned, "\n", sep = "")
+      if (error) cat(" Number of failed validations: ", private$n_failed, "\n", sep = "")
       if (nrow(private$validation_results) > 0) {
         cat("\n")
         cat("Advanced view: \n")
@@ -23,7 +23,7 @@ Report <- R6Class( #nolint: object_name_linter
       invisible(self)
     },
     add_validations = function(data, name = NULL) {
-      object_name <- ifelse(!is.null(name), name, get_first_name(data))
+      object_name <- ifelse(!is.null(name), name, get_first_name())
       results <- parse_results_to_df(data) %>%
         dplyr::mutate(table_name = object_name) %>%
         dplyr::select(table_name, dplyr::everything())
@@ -51,7 +51,7 @@ Report <- R6Class( #nolint: object_name_linter
       do.call(private$report_constructor, params_list)
     },
     save_html_report = function(template = system.file(
-                                  "rmarkdown/templates/standard/skeleton/skeleton.Rmd",
+                                  "rmarkdown/templates/standard/skeleton/skeleton.Rmd", #nolint
                                   package = "data.validator"
                                 ),
                                 output_file = "validation_report.html",
@@ -75,13 +75,23 @@ Report <- R6Class( #nolint: object_name_linter
       )
     },
     save_log = function(file_name = "validation_log.txt", success, warning, error) {
-        sink(file_name)
-        self$print(success, warning, error)
-        sink()
+      sink(file_name)
+      self$print(success, warning, error)
+      sink()
     },
-    save_results = function(file_name, method = write.csv, ...) {
-      self$get_validations(unnest = TRUE) %>%
-        write.csv(file = file_name)
+    save_results = function(file_name = "results.csv", method = utils::write.csv, ...) {
+      tryCatch({
+        method(x = self$get_validations(unnest = TRUE), file = file_name, ...)
+      },
+      error = function(error) {
+        rlang::abort(
+          paste(
+            "Error message:", error$message, "\nProbable Reason:",
+            "Method may not be supported. Method must have 'x' and 'file' arguments.",
+            "Please create a wrapper function to use un-supported methods."
+          )
+        )
+      })
     }
   ),
   private = list(
@@ -142,7 +152,10 @@ get_results <- function(report, unnest = FALSE) {
 #'
 #' @param report Report object that stores validation results. See \link{get_results}.
 #' @param file_name Name of the resulting file (including extension).
-#' @param method Function that should be used to save results table (write.csv default).
+#' @param method Function that should be used to save results table (write.csv default)
+#' The function passed to \code{method} should have 'x' and 'file' arguments. Functions with
+#' different arguments can be passed by creating a wrapper function for it.
+#' See example save_results_methods.
 #' @param ... Remaining parameters passed to \code{method}.
 #' @export
 save_results <- function(report, file_name = "results.csv", method = utils::write.csv, ...) {
@@ -161,6 +174,7 @@ save_results <- function(report, file_name = "results.csv", method = utils::writ
 #'   \code{data.validator} rmarkdown template to see basic construction - the one is used as a
 #'   default template.
 #' @param ... Additional parameters passed to \code{ui_constructor}.
+#' For example: \code{df_error_head_n}
 #' @export
 save_report <- function(report,
                         output_file = "validation_report.html",

@@ -1,7 +1,7 @@
 Package: data.validator
 Type: Package
 Title: Automatic Data Validation and Reporting
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(person("Marcin", "Dubel", email = "opensource+marcin@appsilon.com", role = c("aut", "cre")),
              person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = c("aut")),
              person("Jakub", "Nowicki", email = "kuba@appsilon.com", role = c("aut")),
@@ -21,11 +21,12 @@ Language: en-US
 Imports: assertr (>= 2.8), shiny.semantic (>= 0.3.3), knitr, purrr,
         dplyr, tidyr, utils, R6, rlang, rmarkdown, htmltools,
         htmlwidgets, tibble
-Suggests: covr, fixtuRes, lintr, rcmdcheck, shiny, spelling, testthat
+Suggests: covr, fixtuRes, fs, lintr, magrittr, rcmdcheck, readr, shiny,
+        spelling, targets, testthat, visNetwork, withr
 Collate: 'results_parsers.R' 'semantic_report_constructors.R' 'utils.R'
         'report.R' 'assertions.R'
 NeedsCompilation: no
-Packaged: 2023-05-08 13:38:42 UTC; kuba
+Packaged: 2023-12-11 10:01:11 UTC; kuba
 Author: Marcin Dubel [aut, cre],
   Paweł Przytuła [aut],
   Jakub Nowicki [aut],
@@ -35,4 +36,4 @@ Author: Marcin Dubel [aut, cre],
   Appsilon Sp. z o.o. [cph]
 Maintainer: Marcin Dubel <opensource+marcin@appsilon.com>
 Repository: CRAN
-Date/Publication: 2023-05-08 14:30:25 UTC
+Date/Publication: 2023-12-11 10:20:06 UTC
